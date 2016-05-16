@@ -35,7 +35,7 @@ void* Student(void* param)
         pthread_mutex_unlock(&printf_lock);
         sleep(time);	//Sleep here indicates programming time the student uses
         pthread_mutex_lock(&printf_lock);
-        printf("SID:%d will go to TA\n", SID);	//Student done with programming, inteds to go to TA
+        printf("SID:%d inteds to go to TA\n", SID);	//Student done with programming, inteds to go to TA
         pthread_mutex_unlock(&printf_lock);
         
         //Lock access to chairs
