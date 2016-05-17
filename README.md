@@ -4,7 +4,7 @@ Simulation of the Sleepy TA problem (AKA Sleeping Barber problem)
 # Compiling and Running
 
 - To compile
-  * gcc -pthread main.c Ta.c Utility.c Student.c -o [OutputFileName]
+  * gcc -pthread *.c -o [OutputFileName]
  
 - To run
   * ./[OutputFileName] Arg1

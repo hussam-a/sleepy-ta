@@ -10,8 +10,9 @@ pthread_mutex_t setup_lock;
 pthread_mutex_t printf_lock;
 pthread_mutex_t rand_lock;
 pthread_mutex_t chairs_lock;
+sem_t TA_ready;
 sem_t TA_done;
-sem_t Student_waiting;
+sem_t Student_register;
 int occupied_chairs;
 int MAX_CHAIRS;
 int MIN_PROGRAMMING_TIME;
@@ -53,10 +54,10 @@ int main(int argc, char** argv)
     //Setting global variables and initializing mutexes and semaphores
     MAX_CHAIRS = 3;
     occupied_chairs = 0;
-    MIN_PROGRAMMING_TIME = 20;
+    MIN_PROGRAMMING_TIME = 10;
     MAX_PROGRAMMING_TIME = 30;
-    MIN_HELPING_TIME = 10;
-    MAX_HELPING_TIME = 20;
+    MIN_HELPING_TIME = 5;
+    MAX_HELPING_TIME = 10;
     globalSeed= time(NULL);
     front = 0;
     rear = -1;
@@ -64,8 +65,9 @@ int main(int argc, char** argv)
     pthread_mutex_init(&printf_lock, NULL);
     pthread_mutex_init(&rand_lock, NULL);
     pthread_mutex_init(&chairs_lock, NULL);
+    sem_init(&TA_ready, 0,0);
     sem_init(&TA_done, 0,0);
-    sem_init(&Student_waiting,0,0);
+    sem_init(&Student_register,0,0);
     
     //Start creating TA then students one by one, using the setup_lock mutex
     pthread_t temp;
